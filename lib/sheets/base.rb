@@ -6,7 +6,7 @@ module Sheets
       file = File.open(file.to_s) unless file.respond_to? :read
       
       @data = file.read
-      @extension = options[:format] || File.basename(file.path).split('.')[-1]
+      @extension = options[:format].to_s || File.basename(file.path).split('.')[-1]
 
       raise UnsupportedSpreadsheetFormatError, "Couldn't find a parser for the '#{@extension}' format." if parser.nil?
     end
