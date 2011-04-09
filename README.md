@@ -18,7 +18,7 @@ To retrieve a list of supported spreadsheet formats at runtime:
 
     Sheets::Base.formats # => ["csv", "xls", "xlsx", "ods"]
 
-To open a spreadsheet, pass initialize Sheets::Base with either a file path:
+To open a spreadsheet, pass initialize Sheets::Base.new either a file path:
 
     Sheets::Base.new( '/path/to/a/spreadsheet.(format)' )
 
@@ -30,7 +30,7 @@ By default, Sheets will use the basename of the file to detect the spreadsheet t
 
     Sheets::Base.new( File.open('/path/to/a/spreadsheet.(format)'), :format => :xls )
 
-Once you have imported a sheet, you can either grab the array and get out:
+Once you have imported a sheet, you can either grab the array:
 
     sheet = Sheets::Base.new( # ... )
     sheet.to_array
@@ -48,4 +48,4 @@ Parsers subclass Sheets::Parsers::Base, live in the Sheets::Parsers namespace an
 * formats: returns an array of string format names (file extensions) that this parser class supports
 * to_array: returns a simple array representation of the spreadsheet.
 
-Parsers have access to @data and @format in order to do their parsing. See lib/parsers/* for examples.
+Parsers have access to @data and @format in order to do their parsing. See lib/sheets/parsers/* for examples.
