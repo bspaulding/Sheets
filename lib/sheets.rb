@@ -6,6 +6,7 @@ module Sheets
 end
 
 require File.join 'lib', 'sheets', 'parseable.rb'
-Dir[ File.join 'parsers', '*.rb' ].each {|file| require file }
+require File.join 'lib', 'sheets', 'parsers', 'base.rb'
+Dir[ File.join 'lib', 'sheets', 'parsers', '*_parser.rb' ].each {|file| require file }
 
 require File.join 'lib', 'sheets', 'base.rb'
