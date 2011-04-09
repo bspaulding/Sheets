@@ -1,6 +1,11 @@
 class Sheets::Parsers::Base
-  def initialize(data)
+  def initialize(data, format)
     @data = data
+    @format = format
+  end
+
+  def io
+    StringIO.new(@data)
   end
 
   def self.parses(*args)
