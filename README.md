@@ -14,9 +14,9 @@ Your application only needs to care about the layout of the spreadsheet, and the
 Usage
 ----------
 
-To retrieve a list of supported spreadsheet formats at runtime:
+To retrieve a list of parseable spreadsheet formats at runtime:
 
-    Sheets::Base.formats # => ["csv", "xls", "xlsx", "ods"]
+    Sheets::Base.parseable_formats # => ["csv", "xls", "xlsx", "ods"]
 
 To open a spreadsheet, pass initialize Sheets::Base.new either a file path:
 

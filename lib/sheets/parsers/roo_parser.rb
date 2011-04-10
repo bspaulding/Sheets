@@ -19,20 +19,10 @@ class Sheets::Parsers::RooParser < Sheets::Parsers::Base
       array << row
     end
     array
-  ensure
-    File.delete(@file_path) if File.exists?(@file_path)
-  end
-
-  def to_csv
-    spreadsheet.to_csv
-  ensure
-    File.delete(@file_path) if File.exists?(@file_path)
   end
 
   private
   def spreadsheet
-    @file_path = "tmp_#{Time.now.to_i}.#{@format}"
-    File.open(@file_path, 'w+') {|f| f.write(@data) }
     ROO_CLASS[@format.to_sym].new(@file_path)
   end
 end

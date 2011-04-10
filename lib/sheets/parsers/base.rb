@@ -1,7 +1,8 @@
 class Sheets::Parsers::Base
-  def initialize(data, format)
+  def initialize(data, format, file_path)
     @data = data
     @format = format
+    @file_path = file_path
   end
 
   def io

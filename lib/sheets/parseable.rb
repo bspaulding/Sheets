@@ -7,7 +7,7 @@ module Sheets
     end
 
     module ClassMethods
-      def formats
+      def parseable_formats
         Sheets::Parsers.constants.collect {|constant_name| Sheets::Parsers.const_get(constant_name) }.map(&:formats).flatten.uniq
       end
     end
@@ -16,10 +16,8 @@ module Sheets
       to_array.each {|row| yield row }
     end
 
-    [ :to_array, :to_csv ].each do |method_name|
-      define_method(method_name) do
-        parser.send(method_name)
-      end
+    def to_array
+      parser.send(:to_array)
     end
 
     private
@@ -35,7 +33,7 @@ module Sheets
     end
 
     def parser
-      @parser ||= parser_class.new(@data, @extension) unless parser_class.nil?
+      @parser ||= parser_class.new(@data, @extension, @file_path) unless parser_class.nil?
     end
   end
 end
