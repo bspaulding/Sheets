@@ -14,7 +14,7 @@ Your application only needs to care about the layout of the spreadsheet, and the
 Usage
 ----------
 
-Install via Rubygems: (This will also install Roo its dependencies, including Spreadsheet).
+Install via Rubygems:
 
     gem install sheets
 
