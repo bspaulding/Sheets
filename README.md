@@ -28,9 +28,9 @@ or a file handle:
 
 By default, Sheets will use the basename of the file to detect the spreadsheet type. You can override this by passing in the :format option:
 
-    Sheets::Base.new( an_io_object_with_spreadsheet_data, :format => :xls )
-
 *This is necessary if you pass Sheets an IO object, like StringIO, that doesn't have metadata like a filename/path.*
+
+    Sheets::Base.new( an_io_object_with_spreadsheet_data, :format => :xls )
 
 Once you have imported a sheet, you can either grab the array:
 
