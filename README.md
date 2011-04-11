@@ -28,7 +28,9 @@ or a file handle:
 
 By default, Sheets will use the basename of the file to detect the spreadsheet type. You can override this by passing in the :format option:
 
-    Sheets::Base.new( File.open('/path/to/a/spreadsheet.(format)'), :format => :xls )
+    Sheets::Base.new( an_io_object_with_spreadsheet_data, :format => :xls )
+
+*This is useful if especially useful if you pass Sheets an IO object, like StringIO, that doesn't have metadata like a filename/path.*
 
 Once you have imported a sheet, you can either grab the array:
 
@@ -40,6 +42,20 @@ or utilize any of the Enumerable functions on the sheet:
     sheet = Sheets::Base.new( # ... )
     sheet.collect {|row| puts row }
 
+Additionally, you may output the sheet in any of the renderable formats:
+
+    Sheets::Base.renderable_formats # => ['csv', 'xls']
+    sheet = Sheets::Base.new( file )
+    sheet.to_csv
+    sheet.to_xls
+
+Sheets::Base will skip the parsing phase if initialized with an array, allowing you to render arrays to a native spreadsheet format:
+
+    my_awesome_data = [ ["Date", "Spent", "Earned"], ["2011-04-11", "$0.00", "$5,000.00"] ]
+    sheet = Sheets::Base.new( my_awesome_data )
+    sheet.to_csv
+    sheet.to_xls
+
 Adding Parsers
 ------------
 
@@ -49,3 +65,13 @@ Parsers subclass Sheets::Parsers::Base, live in the Sheets::Parsers namespace an
 * to_array: returns a simple array representation of the spreadsheet.
 
 Parsers have access to @data and @format in order to do their parsing. See lib/sheets/parsers/* for examples.
+
+Adding Renderers
+------------
+
+Renderers subclass Sheets::Renderers::Base, live in the Sheets::Renderers namespace and should respond to:
+
+* formats: returns an array of string format names that this parser class supports
+* to_#{format}: For each format that a renderer supports, it should respond to "to_#{format}", returning the file data of that format.
+
+Renderers are given access to the results of Sheets::Base#to_array as @data. See lib/sheets/renderers/* for examples.
