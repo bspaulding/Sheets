@@ -72,6 +72,21 @@ Adding Renderers
 Renderers subclass Sheets::Renderers::Base, live in the Sheets::Renderers namespace and should respond to:
 
 * formats: returns an array of string format names that this parser class supports
-* to_#{format}: For each format that a renderer supports, it should respond to "to_#{format}", returning the file data of that format.
+* to\_#{format}: For each format that a renderer supports, it should respond to "to\_#{format}", returning the file data of that format.
 
 Renderers are given access to the results of Sheets::Base#to_array as @data. See lib/sheets/renderers/* for examples.
+
+License
+----------
+
+Sheets is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php). 
+
+Please note that Sheets is dependent upon the Spreadsheet gem, which is licensed under the [GPLv3](http://www.opensource.org/licenses/gpl-3.0.html).
+
+Credits
+----------
+
+Sheets takes full advantage of the great work done in these gems:
+
+* [Spreadsheet](http://spreadsheet.rubyforge.org/) - mhatakeyama@ywesee.com, zdavatz@ywesee.com
+* [Roo](http://roo.rubyforge.org/) - [Thomas Preymesser](mailto:thopre@gmail.com)
