@@ -30,7 +30,7 @@ module Sheets
     end
 
     def renderer(format = @extension)
-      @renderer ||= renderer_class(format).new(to_array, format) unless renderer_class(format).nil?
+      renderer_class(format).new(to_array, format) unless renderer_class(format).nil?
     end
   end
 end
