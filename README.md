@@ -14,6 +14,10 @@ Your application only needs to care about the layout of the spreadsheet, and the
 Usage
 ----------
 
+Install via Rubygems: (This will also install Roo its dependencies, including Spreadsheet).
+
+    gem install sheets
+
 To retrieve a list of parseable spreadsheet formats at runtime:
 
     Sheets::Base.parseable_formats # => ["csv", "xls", "xlsx", "ods"]
