@@ -30,7 +30,7 @@ By default, Sheets will use the basename of the file to detect the spreadsheet t
 
     Sheets::Base.new( an_io_object_with_spreadsheet_data, :format => :xls )
 
-*This is useful if especially useful if you pass Sheets an IO object, like StringIO, that doesn't have metadata like a filename/path.*
+*This is necessary if you pass Sheets an IO object, like StringIO, that doesn't have metadata like a filename/path.*
 
 Once you have imported a sheet, you can either grab the array:
 
