@@ -2,7 +2,7 @@ require 'roo'
 require File.join( File.expand_path(File.dirname(__FILE__)), 'roo_patches.rb' )
 
 class Sheets::Parsers::RooParser < Sheets::Parsers::Base
-  parses :xls, :xlsx, :ods
+  parses :xlsx, :ods
 
   ROO_CLASS = {
     :xls  => Excel,
