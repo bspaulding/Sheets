@@ -10,9 +10,34 @@ test_classes_for_collection parser_classes do |parser_class|
   end
 
   parser_class.formats.each do |format|
-    define_method "test_#{format}_to_array" do
+    define_method "test_#{format}_responds_to_to_array" do
       parser = parser_class.new([], format, nil)
       assert parser.respond_to?("to_array"), "#{parser.inspect} doesn't respond to to_array"
+    end
+
+    define_method "test_#{format}_to_array_matches_sample_data" do
+      example_data = [
+        [ "Date",       "Impressions", "Clicks", "Actions" ],
+        [ "2011-01-01", "10.0",        "10.0",   "10.0"    ],
+        [ "2011-01-02", "10.0",        "10.0",   "10.0"    ],
+        [ "2011-01-03", "10.0",        "10.0",   "10.0"    ],
+        [ "2011-01-04", "10.0",        "10.0",   "10.0"    ],
+        [ "2011-01-05", "10.0",        "10.0",   "10.0"    ],
+        [ "2011-01-06", "10.0",        "10.0",   "10.0"    ],
+        [ "2011-01-07", "10.0",        "10.0",   "10.0"    ],
+        [ "2011-01-08", "10.0",        "10.0",   "10.0"    ],
+        [ "2011-01-09", "10.0",        "10.0",   "10.0"    ],
+        [ "2011-01-10", "10.0",        "10.0",   "10.0"    ]
+      ]
+
+      file_path = File.expand_path( File.join('test', 'data', "simple.#{format}") )
+      parser = parser_class.new( File.read(file_path), format, file_path )
+      result = parser.to_array
+
+      # Normalize to parsed dates to avoid Date type conflict 'failures'
+      result[1..-1].collect {|row| row[0] = Date.parse(row[0]).strftime('%Y-%m-%d') }
+
+      assert_equal example_data, result, "#{parser_class}#to_array for format #{format} doesn't match example data."
     end
   end
 end
