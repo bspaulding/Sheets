@@ -1,4 +1,4 @@
-parser_classes = (Sheets::Parsers.constants - ["Base"]).map {|constant_name| Sheets::Parsers.const_get(constant_name) }
+parser_classes = (Sheets::Parsers.constants.map(&:to_s) - ["Base"]).map {|constant_name| Sheets::Parsers.const_get(constant_name) }
 
 test_classes_for_collection parser_classes do |parser_class|
   define_method :test_provides_formats do

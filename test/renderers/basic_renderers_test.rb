@@ -1,4 +1,4 @@
-renderer_classes = (Sheets::Renderers.constants - ["Base"]).map {|constant_name| Sheets::Renderers.const_get(constant_name) }
+renderer_classes = (Sheets::Renderers.constants.map(&:to_s) - ["Base"]).map {|constant_name| Sheets::Renderers.const_get(constant_name) }
 
 test_classes_for_collection renderer_classes do |renderer_class|
   define_method :test_provides_formats do
