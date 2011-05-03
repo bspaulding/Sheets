@@ -80,19 +80,10 @@ Renderers subclass Sheets::Renderers::Base, live in the Sheets::Renderers namesp
 
 Renderers are given access to the results of Sheets::Base#to_array as @data. See lib/sheets/renderers/* for examples.
 
-Tests
+Test Suite Results
 -----
 
-Test Suite passes on the following Rubies:
-
-* ruby 1.9.2p136 (2010-12-25 revision 30365) [x86_64-darwin10.7.0]
-* ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-darwin10.0]
-* ruby 1.8.7 (2010-04-19 patchlevel 253) [i686-darwin10.6.0], MBARI 0x6770, Ruby Enterprise Edition 2010.02
-* rubinius 1.2.4dev (1.8.7 06c3412a yyyy-mm-dd JI) [x86_64-apple-darwin10.7.0]
-
-Test Suite fails on the following Rubies:
-
-* MacRuby 0.8 (ruby 1.9.2) [universal-darwin10.0, x86_64]
+The test suite is run on multiple rubies, and results are recorded in a JSON summary format (via rvm). You can view test results inside the test/results directory.
 
 License
 ----------
