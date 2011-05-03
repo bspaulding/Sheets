@@ -85,7 +85,7 @@ Test Suite Results
 
 The test suite is run on multiple rubies, and results are recorded in a JSON summary format (via rvm). 
 
-You can view the latest test results test/results.json.
+You can view the latest test results [test/results.json](https://github.com/bspaulding/Sheets/blob/master/test/results.json).
 
 License
 ----------
