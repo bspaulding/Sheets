@@ -83,7 +83,9 @@ Renderers are given access to the results of Sheets::Base#to_array as @data. See
 Test Suite Results
 -----
 
-The test suite is run on multiple rubies, and results are recorded in a JSON summary format (via rvm). You can view test results inside the test/results directory.
+The test suite is run on multiple rubies, and results are recorded in a JSON summary format (via rvm). 
+
+You can view test results inside the test/results directory.
 
 License
 ----------
