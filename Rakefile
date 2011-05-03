@@ -11,7 +11,8 @@ namespace :test do
   end
 
   task :all do
-    system "rvm --json #{testing_rubies.join(',')} rake test > test/results/#{Time.now.strftime('%Y-%m-%d-%H%M%S')}.json"
+    File.delete('test/results.json') if File.exists?('test/results.json')
+    system "rvm --json #{testing_rubies.join(',')} rake test > test/results.json"
   end
 end
 
@@ -42,5 +43,11 @@ namespace :install do
       puts '- Installing bundle...'
       system "rvm #{ruby} exec bundle install"
     end
+  end
+end
+
+namespace :clean do
+  task :rbx do
+    Dir[ File.join(File.expand_path(File.dirname(__FILE__)), '**', '*.rbc') ].each {|file| File.delete(file) }
   end
 end
