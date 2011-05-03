@@ -1,0 +1,13 @@
+{
+"totals": { "rubies": 6, "successes": 6, "errors": 0 },
+"successful": ["ruby-1.8.7-p334", "ruby-1.9.2-p180", "ree-1.8.7-2011.03", "ree-1.8.7-2010.01", "jruby-1.6.1", "rbx-head"],
+"errors": [],
+"rubies": { 
+    {"ruby-1.8.7-p334": 0},  
+    {"ruby-1.9.2-p180": 0},  
+    {"ree-1.8.7-2011.03": 0},  
+    {"ree-1.8.7-2010.01": 0},  
+    {"jruby-1.6.1": 0},  
+    {"rbx-head": 0}
+  }
+}
