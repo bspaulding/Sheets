@@ -90,6 +90,10 @@ Test Suite passes on the following Rubies:
 * ruby 1.8.7 (2010-04-19 patchlevel 253) [i686-darwin10.6.0], MBARI 0x6770, Ruby Enterprise Edition 2010.02
 * rubinius 1.2.4dev (1.8.7 06c3412a yyyy-mm-dd JI) [x86_64-apple-darwin10.7.0]
 
+Test Suite fails on the following Rubies:
+
+* MacRuby 0.8 (ruby 1.9.2) [universal-darwin10.0, x86_64]
+
 License
 ----------
 
