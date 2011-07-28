@@ -4,6 +4,8 @@ Bundler::GemHelper.install_tasks
 
 testing_rubies = %w[1.8.7 1.9.2 ree ree-1.8.7-2010.01 jruby rbx]
 
+task :default => :test
+
 namespace :test do
   task :current do
     require File.join(File.expand_path(File.dirname(__FILE__)), 'test', 'test_helper.rb')
