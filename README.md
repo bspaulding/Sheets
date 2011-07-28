@@ -83,9 +83,9 @@ Renderers are given access to the results of Sheets::Base#to_array as @data. See
 Test Suite Results
 -----
 
-The test suite is run on multiple rubies, and results are recorded in a JSON summary format (via rvm). 
+Sheets uses Travis-CI for Continuous Integration.
 
-You can view the latest test results [test/results.json](https://github.com/bspaulding/Sheets/blob/master/test/results.json).
+[![Build Status](http://travis-ci.org/bspaulding/Sheets.png)](http://travis-ci.org/bspaulding/Sheets)
 
 License
 ----------
