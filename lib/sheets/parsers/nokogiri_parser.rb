@@ -8,11 +8,24 @@ class Sheets::Parsers::NokogiriParser < Sheets::Parsers::Base
         row.css('c').collect do |cell|
           cell_value = cell.css('v').text
 
-          if cell.attribute('t') && cell.attribute('t').value == 's'
-            # Load Shared String Value
-            cell_value = shared_strings[cell_value.to_i]
+          if cell.attribute('t')
+            celltype = cell.attribute('t').value
+            if celltype == 's'
+              # Load Shared String Value
+              cell_value = shared_strings[cell_value.to_i]
+            elsif celltype == 'b'
+              cell_value = (cell_value == "1") ? "TRUE" : "FALSE"
+            end
           end
           
+          if cell.attribute('s') && cell.attribute('s').value == "1"
+            cell_value = (base_date + cell_value.to_f).strftime('%Y-%m-%d') # Date conversion
+          end
+
+          if cell_value.match(/\A[0-9]+\.?[0-9]*\Z/)
+            cell_value = cell_value.to_f.to_s
+          end
+
           cell_value
         end
       end
@@ -46,5 +59,18 @@ class Sheets::Parsers::NokogiriParser < Sheets::Parsers::Base
   # returns an array of nokogiri documents for each worksheet
   def worksheets
     @worksheets ||= worksheet_ids.collect {|sheet_id| Nokogiri::XML( zipfile.read("xl/worksheets/sheet#{sheet_id}.xml") ) }
+  end
+
+  # returns a date object representing the start of the serial date system for this sheet
+  # Either 1900-01-01 or 1904-01-01
+  def base_date
+    @base_date ||= lambda do
+      date_base_element = workbook.search('workbookPr').attribute('date1904')
+      if date_base_element && date_base_element.value.to_i == 1
+        Date.parse('1904-01-01')
+      else
+        Date.parse('1900-01-01')
+      end
+    end.call
   end
 end
