@@ -1,3 +1,5 @@
+require 'spreadsheet'
+
 class Sheets::Parsers::ExcelParser < Sheets::Parsers::Base
   parses :xls
 

@@ -1,3 +1,6 @@
+require 'nokogiri'
+require 'zip/zip'
+
 class Sheets::Parsers::NokogiriXlsxParser < Sheets::Parsers::Base
   parses :xlsx
 
