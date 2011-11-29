@@ -15,12 +15,8 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "sheets"
 
   s.add_dependency('spreadsheet', '>= 0.6.5.2')
-  s.add_dependency('roo', '= 1.9.3')
-  # These are the dependencies roo forgot:
-  s.add_dependency('builder', '>= 3.0.0')
   s.add_dependency('rubyzip', '>= 0.9.4')
   s.add_dependency('nokogiri', '>= 1.4.3.1')
-  s.add_dependency('google-spreadsheet-ruby', '>= 0.1.1')
 
   s.add_development_dependency('rake', '0.9.2')
 
