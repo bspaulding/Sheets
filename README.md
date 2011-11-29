@@ -97,7 +97,8 @@ Please note that Sheets is dependent upon the Spreadsheet gem, which is licensed
 Credits
 ----------
 
-Sheets takes full advantage of the great work done in these gems:
+Sheets takes advantage of the work done in these gems:
 
-* [Spreadsheet](http://spreadsheet.rubyforge.org/) - mhatakeyama@ywesee.com, zdavatz@ywesee.com
-* [Roo](http://roo.rubyforge.org/) - [Thomas Preymesser](mailto:thopre@gmail.com)
+* [spreadsheet](http://rubygems.org/gems/spreadsheet)
+* [rubyzip](http://rubygems.org/gems/rubyzip)
+* [nokogiri](http://rubygems.org/gems/nokogiri)
