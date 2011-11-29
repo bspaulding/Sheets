@@ -1,4 +1,4 @@
-class Sheets::Parsers::NokogiriParser < Sheets::Parsers::Base
+class Sheets::Parsers::NokogiriXlsxParser < Sheets::Parsers::Base
   parses :xlsx
 
   def to_array
