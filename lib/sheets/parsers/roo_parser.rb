@@ -1,14 +1,7 @@
 require 'roo'
-require File.join( File.expand_path(File.dirname(__FILE__)), 'roo_patches.rb' )
 
 class Sheets::Parsers::RooParser < Sheets::Parsers::Base
   parses :ods
-
-  ROO_CLASS = {
-    :xls  => Excel,
-    :xlsx => Excelx,
-    :ods  => Openoffice
-  }
 
   def to_array
     array = []
@@ -24,6 +17,6 @@ class Sheets::Parsers::RooParser < Sheets::Parsers::Base
 
   private
   def spreadsheet
-    ROO_CLASS[@format.to_sym].new(@file_path)
+    Openoffice.new(@file_path)
   end
 end
