@@ -54,14 +54,13 @@ class Sheets::Parsers::NokogiriXlsxParser < Sheets::Parsers::Base
     @shared_strings ||= Nokogiri::XML( zipfile.read("xl/sharedStrings.xml") ).css('si>t').collect(&:text)
   end
 
-  # returns an array of strings containing the worksheet ids from the workbook
-  def worksheet_ids
-    @sheet_ids ||= workbook.css('sheets>sheet').collect {|sheet| sheet.attribute('sheetId').value }
+  def number_of_worksheets
+    @number_of_worksheets ||= workbook.css("sheets > sheet").size
   end
 
   # returns an array of nokogiri documents for each worksheet
   def worksheets
-    @worksheets ||= worksheet_ids.collect {|sheet_id| Nokogiri::XML( zipfile.read("xl/worksheets/sheet#{sheet_id}.xml") ) }
+    @worksheets ||= (1..number_of_worksheets).collect { |n| Nokogiri::XML(zipfile.read("xl/worksheets/sheet#{n}.xml")) }
   end
 
   # returns a date object representing the start of the serial date system for this sheet
