@@ -3,9 +3,9 @@ Sheets
 
 Sheets is a Facade on top of many spreadsheet formats, presenting them as simple, unified, native ruby arrays. It is intended to allow applications to easily import data from a wide variety of spreadsheet formats.
 
-With Sheets, all cell values are strings representing the final, evaluated value of the cell. 
+With Sheets, all cell values are strings representing the final, evaluated value of the cell.
 
-This does mean that, in some cases, you will be casting data back into its native format. 
+This does mean that, in some cases, you will be casting data back into its native format.
 
 However, this eliminates the need to deal with multiple spreadsheet formats and normalize data types in your application logic.
 
@@ -90,7 +90,7 @@ Sheets uses Travis-CI for Continuous Integration.
 License
 ----------
 
-Sheets is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php). 
+Sheets is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
 
 Please note that Sheets is dependent upon the Spreadsheet gem, which is licensed under the [GPLv3](http://www.opensource.org/licenses/gpl-3.0.html).
 
