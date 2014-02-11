@@ -5,3 +5,6 @@ rvm:
  - ree
  - rbx
  - jruby
+notifications:
+  email:
+   - brad.spaulding@gmail.com
