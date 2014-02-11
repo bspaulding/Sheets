@@ -19,17 +19,7 @@ class Sheets::Parsers::NokogiriXlsxParser < Sheets::Parsers::Base
   end
 
   def value_for_cell(cell)
-    cell_value = cell.css('v').text
-
-    if cell.attribute('t')
-      cell_value = case cell.attribute('t').value
-        when 's'
-          # Load Shared String Value
-          shared_strings[cell_value.to_i]
-        when 'b'
-          (cell_value == "1") ? "TRUE" : "FALSE"
-        end
-    end
+    cell_value = value_for_cell_type(cell.css('v').text, cell_type(cell))
 
     if cell.attribute('s') && cell.attribute('s').value == "1"
       cell_value = (base_date + cell_value.to_f).strftime('%Y-%m-%d') # Date conversion
@@ -40,6 +30,16 @@ class Sheets::Parsers::NokogiriXlsxParser < Sheets::Parsers::Base
     end
 
     cell_value
+  end
+
+  def cell_type(cell)
+    cell.attribute('t') ? cell.attribute('t').text : nil
+  end
+
+  def value_for_cell_type(cell_value, type)
+    { 's' => shared_strings[cell_value.to_i],
+      'b' => ((cell_value == "1") ? "TRUE" : "FALSE")
+    }[type] || cell_value
   end
 
   # returns the zipfile object for the document
