@@ -14,9 +14,9 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "sheets"
 
-  s.add_dependency('spreadsheet', '>= 0.6.5.2')
-  s.add_dependency('rubyzip', '>= 0.9.4')
-  s.add_dependency('nokogiri', '>= 1.4.3.1')
+  s.add_dependency('spreadsheet', '~>0.6.5.2')
+  s.add_dependency('rubyzip', '~>0.9.4')
+  s.add_dependency('nokogiri', '~>1.4.3.1')
 
   s.add_development_dependency('rake', '0.9.2')
 
