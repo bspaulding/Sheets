@@ -7,3 +7,4 @@ pkg/*
 doc/*
 log/*
 *.rbc
+.ruby-version
