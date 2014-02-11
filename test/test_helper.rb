@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require 'test/unit'
 
 puts 'Loading Test Generators'
