@@ -5,39 +5,42 @@ class Sheets::Parsers::NokogiriXlsxParser < Sheets::Parsers::Base
   parses :xlsx
 
   def to_array
-    # Create Matrices
-    matrices = worksheets.collect do |worksheet|
-      worksheet.css('sheetData>row').collect do |row|
-        row.css('c').collect do |cell|
-          cell_value = cell.css('v').text
-
-          if cell.attribute('t')
-            celltype = cell.attribute('t').value
-            if celltype == 's'
-              # Load Shared String Value
-              cell_value = shared_strings[cell_value.to_i]
-            elsif celltype == 'b'
-              cell_value = (cell_value == "1") ? "TRUE" : "FALSE"
-            end
-          end
-          
-          if cell.attribute('s') && cell.attribute('s').value == "1"
-            cell_value = (base_date + cell_value.to_f).strftime('%Y-%m-%d') # Date conversion
-          end
-
-          if cell_value.match(/\A[0-9]+\.?[0-9]*\Z/)
-            cell_value = cell_value.to_f.to_s
-          end
-
-          cell_value
-        end
-      end
-    end
-
-    matrices.first
+    extract_worksheet(worksheets.first)
   end
 
   private
+
+  def extract_worksheet(worksheet)
+    worksheet.css('sheetData>row').collect {|row| extract_row(row) }
+  end
+
+  def extract_row(row)
+    row.css('c').collect {|cell| value_for_cell(cell) }
+  end
+
+  def value_for_cell(cell)
+    cell_value = value_for_cell_type(cell.css('v').text, cell_type(cell))
+
+    if cell.attribute('s') && cell.attribute('s').value == "1"
+      cell_value = (base_date + cell_value.to_f).strftime('%Y-%m-%d') # Date conversion
+    end
+
+    if cell_value.match(/\A[0-9]+\.?[0-9]*\Z/)
+      cell_value = cell_value.to_f.to_s
+    end
+
+    cell_value
+  end
+
+  def cell_type(cell)
+    cell.attribute('t') ? cell.attribute('t').text : nil
+  end
+
+  def value_for_cell_type(cell_value, type)
+    { 's' => shared_strings[cell_value.to_i],
+      'b' => ((cell_value == "1") ? "TRUE" : "FALSE")
+    }[type] || cell_value
+  end
 
   # returns the zipfile object for the document
   def zipfile
