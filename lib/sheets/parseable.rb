@@ -1,14 +1,14 @@
 module Sheets
   module Parseable
     include Enumerable
-    
+
     def self.included(base)
       base.extend(ClassMethods)
     end
 
     module ClassMethods
       def parseable_formats
-        Sheets::Parsers.constants.collect {|constant_name| Sheets::Parsers.const_get(constant_name) }.map(&:formats).flatten.uniq
+        Sheets::Utilities.subclasses_in(Sheets::Parsers).map(&:formats).flatten.uniq
       end
     end
 

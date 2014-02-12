@@ -2,6 +2,12 @@ module Sheets
   module Parsers; end
   module Renderers; end
 
+  class Utilities
+    def self.subclasses_in(klass)
+      klass.constants.collect {|constant_name| klass.const_get(constant_name) }
+    end
+  end
+
   class UnsupportedSpreadsheetFormatError < StandardError; end
 end
 
