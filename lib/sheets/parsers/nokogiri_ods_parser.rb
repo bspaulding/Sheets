@@ -1,11 +1,11 @@
 require 'nokogiri'
-require 'zip/zip'
+require 'zip'
 
 class Sheets::Parsers::NokogiriOdsParser < Sheets::Parsers::Base
   parses :ods
 
   def to_array
-    rows.collect do |row| 
+    rows.collect do |row|
       table_cells = []
       row.xpath('table:table-cell').each do |cell|
         repeat = cell.attributes["number-columns-repeated"].text.to_i if cell.attributes["number-columns-repeated"]
@@ -21,7 +21,7 @@ class Sheets::Parsers::NokogiriOdsParser < Sheets::Parsers::Base
 
   # returns the zipfile object for the document
   def zipfile
-    @zipfile ||= Zip::ZipFile.open( @file_path )
+    @zipfile ||= Zip::File.open( @file_path )
   end
 
   def content_doc
