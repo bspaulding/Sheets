@@ -2,7 +2,7 @@
 require 'bundler'
 Bundler::GemHelper.install_tasks
 
-testing_rubies = %w[1.8.7 1.9.2 ree ree-1.8.7-2010.01 jruby rbx]
+testing_rubies = %w[1.9.2 1.9.3 2.0.0 2.1.0 jruby rbx]
 
 task :default => :test
 
@@ -41,7 +41,7 @@ namespace :install do
 
       puts '- Installing bundler...'
       system "rvm #{ruby} gem install --no-rdoc --no-ri bundler"
-      
+
       puts '- Installing bundle...'
       system "rvm #{ruby} exec bundle install"
     end

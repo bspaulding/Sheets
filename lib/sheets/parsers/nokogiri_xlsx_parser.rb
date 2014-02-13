@@ -1,5 +1,5 @@
 require 'nokogiri'
-require 'zip/zip'
+require 'zip'
 
 class Sheets::Parsers::NokogiriXlsxParser < Sheets::Parsers::Base
   parses :xlsx
@@ -44,7 +44,7 @@ class Sheets::Parsers::NokogiriXlsxParser < Sheets::Parsers::Base
 
   # returns the zipfile object for the document
   def zipfile
-    @zipfile ||= Zip::ZipFile.open( @file_path )
+    @zipfile ||= Zip::File.open( @file_path )
   end
 
   # returns a nokogiri document for the workbook
