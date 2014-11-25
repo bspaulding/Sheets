@@ -86,6 +86,7 @@ Test Suite Results
 Sheets uses Travis-CI for Continuous Integration.
 
 [![Build Status](https://travis-ci.org/bspaulding/Sheets.png?branch=master)](https://travis-ci.org/bspaulding/Sheets)
+[ ![Codeship Status for bspaulding/Sheets](https://codeship.com/projects/860d2890-56fd-0132-be9f-0e0cfcc5dfb4/status)](https://codeship.com/projects/49711)
 
 [![Code Climate](https://codeclimate.com/github/bspaulding/Sheets.png)](https://codeclimate.com/github/bspaulding/Sheets)
 
