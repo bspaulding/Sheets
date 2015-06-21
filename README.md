@@ -1,6 +1,8 @@
 Sheets
 ==========
 
+[![Join the chat at https://gitter.im/bspaulding/Sheets](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/bspaulding/Sheets?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Sheets is a Facade on top of many spreadsheet formats, presenting them as simple, unified, native ruby arrays. It is intended to allow applications to easily import data from a wide variety of spreadsheet formats.
 
 With Sheets, all cell values are strings representing the final, evaluated value of the cell.
