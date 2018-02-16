@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "sheets"
 
-  s.add_dependency('spreadsheet', '~>1.0.0')
+  s.add_dependency('ruby-ole', '~>1.2.11')
   s.add_dependency('rubyzip', '~>1.1.0')
   s.add_dependency('nokogiri', '~>1.6.1')
 
