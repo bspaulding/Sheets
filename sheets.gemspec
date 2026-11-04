@@ -14,11 +14,11 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "sheets"
 
-  s.add_dependency('spreadsheet', '~>1.0.0')
-  s.add_dependency('rubyzip', '~>1.1.0')
-  s.add_dependency('nokogiri', '~>1.6.1')
+  s.add_dependency('spreadsheet', '~>1.3')
+  s.add_dependency('rubyzip', '~>2.3')
+  s.add_dependency('nokogiri', '~>1.16')
 
-  s.add_development_dependency('rake', '~>10.1.1')
+  s.add_development_dependency('rake', '~>13.0')
   s.add_development_dependency('test-unit')
   s.add_development_dependency('simplecov')
 
