@@ -4,7 +4,7 @@ class TestCSVParser < Test::Unit::TestCase
     file_path = generate_test_spreadsheet
     assert_equal Sheets::Base.new( file_path ).to_array, example_spreadsheet_data
   ensure
-    File.delete( file_path ) if File.exists?( file_path )
+    File.delete( file_path ) if File.exist?( file_path )
   end
 
   private

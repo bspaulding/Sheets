@@ -17,6 +17,6 @@ class Sheets::Renderers::ExcelRenderer < Sheets::Renderers::Base
     File.open(file_path, 'w+') {|file| workbook.write(file) }
     File.read(file_path)
   ensure
-    File.delete( file_path ) if File.exists?( file_path )
+    File.delete( file_path ) if File.exist?( file_path )
   end
 end

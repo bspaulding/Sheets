@@ -22,7 +22,7 @@ class TestExcelRenderer < Test::Unit::TestCase
 
     assert_equal EXAMPLE_DATA, Sheets::Base.new( file_path ).to_array
   ensure
-    File.delete( file_path ) if File.exists?( file_path )
+    File.delete( file_path ) if File.exist?( file_path )
   end
 
   Sheets::Base.parseable_formats.each do |parseable_format|
@@ -35,7 +35,7 @@ class TestExcelRenderer < Test::Unit::TestCase
 
         assert_equal sheet.to_array, Sheets::Base.new( file_path ).to_array
       ensure  
-        File.delete( file_path ) if File.exists?( file_path )
+        File.delete( file_path ) if File.exist?( file_path )
       end
     end
   end
